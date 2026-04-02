@@ -6,6 +6,7 @@ import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
 import NavButtons from './components/NavButtons';
 import { VIBE_CONFIGS } from './types';
+import { Analytics } from '@vercel/analytics/react';
 
 function AppInner() {
   const { phase, vibe } = useSession();
@@ -106,6 +107,7 @@ export default function App() {
   return (
     <SessionProvider>
       <AppInner />
+      <Analytics />
     </SessionProvider>
   );
 }

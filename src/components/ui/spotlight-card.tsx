@@ -47,19 +47,28 @@ function onOrientation(e: DeviceOrientationEvent) {
   gyroSubs.forEach(cb => cb(gyroSmX, gyroSmY));
 }
 
+let gyroGranted = false;
+
 function initGyro() {
   if (gyroInitialized || typeof window === 'undefined') return;
   gyroInitialized = true;
 
   const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
   if (typeof DOE.requestPermission === 'function') {
-    // iOS 13+ — needs user gesture
-    const onTouch = () => {
+    // iOS 13+ — needs user gesture, retry on every click until granted
+    const tryRequest = () => {
+      if (gyroGranted) return;
       DOE.requestPermission!().then(r => {
-        if (r === 'granted') window.addEventListener('deviceorientation', onOrientation);
+        if (r === 'granted') {
+          gyroGranted = true;
+          window.addEventListener('deviceorientation', onOrientation);
+          window.removeEventListener('click', tryRequest);
+          window.removeEventListener('touchend', tryRequest);
+        }
       }).catch(() => {});
     };
-    window.addEventListener('touchstart', onTouch, { once: true });
+    window.addEventListener('click', tryRequest);
+    window.addEventListener('touchend', tryRequest);
   } else if ('DeviceOrientationEvent' in window) {
     window.addEventListener('deviceorientation', onOrientation);
   }
