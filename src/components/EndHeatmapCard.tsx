@@ -149,7 +149,7 @@ const EndHeatmapCard = forwardRef<HTMLDivElement, EndHeatmapCardProps>(
             PS: You were drawn to picking {MONTH_LABELS[dominantMonth]}.
           </div>
           <div className="text-white/20 text-[10px] sm:text-xs">
-            dayfield.vercel.app
+            dayfield365.vercel.app
           </div>
         </div>
       </div>
