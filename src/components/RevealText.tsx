@@ -33,7 +33,7 @@ export default function RevealText({ text, guessedMonth, visible }: RevealTextPr
         transition: 'opacity 500ms cubic-bezier(0, 0, 0.58, 1)',
       }}
     >
-      <div className="text-[10px] sm:text-sm text-white/70 leading-snug sm:leading-relaxed max-w-xl mx-auto flex flex-col gap-1 sm:gap-1.5">
+      <div className="text-xs sm:text-sm text-white/70 leading-snug sm:leading-relaxed max-w-xl mx-auto flex flex-col gap-1 sm:gap-1.5">
         {rendered.split('\n\n').map((para, i) => (
           <p key={i}>{para}</p>
         ))}

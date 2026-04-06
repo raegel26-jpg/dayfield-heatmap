@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef, type RefObject } from 'react';
+import { useMemo, useEffect, useRef, useState, type RefObject } from 'react';
 import MonthCluster from './MonthCluster';
 import { useSession } from '../context/SessionContext';
 import { MONTH_ORDER, VIBE_CONFIGS } from '../types';
@@ -21,6 +21,14 @@ export default function HeatmapField({
   const { vibe } = useSession();
   const vibeConfig = VIBE_CONFIGS[vibe ?? 'rgb'];
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 639px)').matches);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)');
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const globalRange = useMemo(() => {
     const allValues = MONTH_ORDER.flatMap((m) => dataset[m]);
@@ -124,6 +132,7 @@ export default function HeatmapField({
           onClick={onGuess}
           globalMin={globalRange.min}
           globalMax={globalRange.max}
+          isMobile={isMobile}
         />
       ))}
     </div>

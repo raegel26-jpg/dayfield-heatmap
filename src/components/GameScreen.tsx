@@ -120,11 +120,11 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
         glowColor="white"
         customSize
         width={1000}
-        className="[--bg-spot-opacity:0] [--backdrop:transparent] !backdrop-blur-none [&>div:first-child]:!backdrop-blur-none !w-[340px] !h-[680px] sm:!w-[1000px] sm:!h-[580px]"
+        className="[--bg-spot-opacity:0] [--backdrop:transparent] !backdrop-blur-none [&>div:first-child]:!backdrop-blur-none !w-[340px] !h-[calc(100dvh-130px)] sm:!w-[1000px] sm:!h-[580px]"
       >
         <div className="relative w-full h-full">
           {/* Question icon — bottom left */}
-          <div className="absolute bottom-[25px] left-5 sm:bottom-auto sm:top-10 sm:left-10 z-20">
+          <div className="absolute bottom-[60px] left-5 sm:bottom-auto sm:top-10 sm:left-10 z-20">
             <QuestionIcon
               questionId={currentQuestion.id}
               questionIndex={questionIndex}
@@ -132,7 +132,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
           </div>
 
           {/* Closeness circle — bottom right */}
-          <div className="absolute bottom-[2px] right-3 sm:bottom-auto sm:top-10 sm:right-10 z-20">
+          <div className="absolute bottom-[37px] right-3 sm:bottom-auto sm:top-10 sm:right-10 z-20">
             <GlassCircle
               value={lastGuess?.accuracy ?? 0}
               label="Accuracy"
@@ -145,7 +145,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
 
           {/* Text zone */}
           <div
-            className="absolute left-0 right-0 flex flex-col items-center z-10 sm:h-[140px] -top-[5px] sm:top-[7px]"
+            className="absolute left-0 right-0 flex flex-col items-center z-10 sm:h-[140px] top-0 sm:top-[7px]"
           >
             {/* Narrative — fades out on reveal, collapses to make room */}
             <div
@@ -163,7 +163,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
                 ].join(', '),
               }}
             >
-              <p className="text-[10px] sm:text-sm text-white/60 leading-snug sm:leading-relaxed whitespace-pre-line overflow-hidden min-h-0">
+              <p className="text-xs sm:text-sm text-white/60 leading-snug sm:leading-relaxed whitespace-pre-line overflow-hidden min-h-0">
                 {currentQuestion.narrative}
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
 
           {/* Heatmap — anchored below text zone, never moves */}
           <div
-            className="absolute left-0 right-0 flex items-start justify-center top-[135px] sm:top-[150px] bottom-[60px]"
+            className="absolute left-0 right-0 flex items-start justify-center top-[135px] sm:top-[150px] bottom-[75px] sm:bottom-[60px] overflow-hidden"
           >
             <HeatmapField
               dataset={currentQuestion.dataset}
@@ -215,7 +215,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
 
           {/* Next button — anchored at bottom */}
           <div
-            className="absolute left-10 right-10 flex justify-center bottom-[25px] sm:bottom-5"
+            className="absolute left-10 right-10 flex justify-center bottom-[12px] sm:bottom-5"
             style={{
               opacity: exiting ? 0 : buttonVisible ? 1 : 0,
               transform: exiting ? 'translateY(-12px)' : buttonVisible ? 'translateY(0)' : 'translateY(6px)',

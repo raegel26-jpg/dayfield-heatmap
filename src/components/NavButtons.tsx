@@ -67,7 +67,7 @@ function Modal({ type, onClose }: { type: ModalType; onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/60 cursor-pointer" role="button" tabIndex={-1} onClick={onClose} onKeyDown={(e) => e.key === 'Escape' && onClose()} />
       <div className="relative z-10">
         <GlowCard
           glowColor="white"
@@ -78,7 +78,7 @@ function Modal({ type, onClose }: { type: ModalType; onClose: () => void }) {
           <div className="relative">
             <button
               onClick={onClose}
-              className="absolute -top-2 -right-2 text-white/40 hover:text-white/70 transition-colors text-lg"
+              className="absolute -top-2 -right-2 w-10 h-10 flex items-center justify-center text-white/40 hover:text-white/70 transition-colors text-lg"
             >
               &times;
             </button>
@@ -227,7 +227,7 @@ export default function NavButtons() {
     <>
       {/* Home — top left (hidden on landing) */}
       {phase !== 'landing' && (
-        <div className="fixed top-5 left-5 z-30">
+        <div className="fixed z-30" style={{ top: 'calc(20px + env(safe-area-inset-top, 0px))', left: '20px' }}>
           <LiquidButton
             size="icon"
             onClick={reset}
@@ -240,7 +240,7 @@ export default function NavButtons() {
       )}
 
       {/* Utilities — top right */}
-      <div className="fixed top-5 right-5 z-30 flex items-center gap-2">
+      <div className="fixed z-30 flex items-center gap-2" style={{ top: 'calc(20px + env(safe-area-inset-top, 0px))', right: '20px' }}>
         <LiquidButton
           size="icon"
           onClick={toggleMusic}
@@ -280,7 +280,7 @@ export default function NavButtons() {
       </div>
 
       {/* FAQ, Feedback — bottom right on mobile only */}
-      <div className="sm:hidden fixed bottom-5 right-5 z-30 flex items-center gap-2 h-10">
+      <div className="sm:hidden fixed z-30 flex items-center gap-2 h-10" style={{ bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))', right: '20px' }}>
         <LiquidButton
           size="icon"
           onClick={() => setModal('faq')}

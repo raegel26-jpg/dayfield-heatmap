@@ -77,7 +77,10 @@ function AppInner() {
         )}
         {(phase === 'landing' || isGamePhase || phase === 'end') && <NavButtons />}
       </div>
-      <div className="fixed top-[21px] left-0 right-0 z-20 flex justify-center pointer-events-none">
+      <div
+        className="fixed left-0 right-0 z-20 flex justify-center pointer-events-none"
+        style={{ top: 'calc(21px + env(safe-area-inset-top, 0px))' }}
+      >
         <span
           className="glass-text text-xs font-light tracking-widest pointer-events-auto uppercase"
           style={{
@@ -88,9 +91,12 @@ function AppInner() {
           Dayfield
         </span>
       </div>
-      <div className="fixed bottom-[21px] sm:bottom-[21px] left-0 right-0 z-20 flex justify-center pointer-events-none sm:h-auto h-10 items-center sm:items-start">
+      <div
+        className="fixed left-0 right-0 z-20 flex sm:justify-center justify-start pointer-events-none sm:h-auto h-10 items-center sm:items-start"
+        style={{ bottom: 'calc(21px + env(safe-area-inset-bottom, 0px))' }}
+      >
         <span
-          className="glass-text text-xs font-light tracking-widest pointer-events-auto"
+          className="glass-text text-xs font-light tracking-widest pointer-events-auto pl-5 sm:pl-0"
           style={{
             backgroundImage: 'radial-gradient(200px 200px at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px), rgba(255,255,255,0.8), rgba(255,255,255,0.25) 70%)',
             backgroundAttachment: 'fixed',

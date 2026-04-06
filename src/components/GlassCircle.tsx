@@ -88,7 +88,7 @@ export default function GlassCircle({ value, label, visible, spinning, spinKey, 
         </span>
       </div>
       {label && (
-        <span className="text-[10px] text-white/30 uppercase tracking-wider">
+        <span className="text-xs text-white/30 uppercase tracking-wider">
           {label}
         </span>
       )}

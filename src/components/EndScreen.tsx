@@ -52,7 +52,7 @@ export default function EndScreen() {
   if (!vibe || guessHistory.length === 0) return null;
 
   return (
-    <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12 gap-8">
+    <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:py-12 gap-6 sm:gap-8 overflow-y-auto">
       <h2
         ref={titleRef}
         className="text-2xl sm:text-4xl font-bold text-white relative"

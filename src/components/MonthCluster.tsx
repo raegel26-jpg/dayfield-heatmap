@@ -14,6 +14,7 @@ type MonthClusterProps = {
   onClick: (month: MonthKey) => void;
   globalMin: number;
   globalMax: number;
+  isMobile: boolean;
 };
 
 const MonthCluster = memo(function MonthCluster({
@@ -26,6 +27,7 @@ const MonthCluster = memo(function MonthCluster({
   onClick,
   globalMin,
   globalMax,
+  isMobile,
 }: MonthClusterProps) {
   const dots = useMemo(() => {
     const range = globalMax - globalMin || 1;
@@ -36,12 +38,11 @@ const MonthCluster = memo(function MonthCluster({
       // Desktop: left-to-right per row; Mobile: bottom-to-top per column
       // Both use staggered offsets for organic wave
       const rowOffsets = [0, 80, 30, 120, 60, 150, 20, 100, 50, 140, 70, 110];
-      const isMobile = window.innerWidth < 640;
       const progress = isMobile ? (dailyValues.length - 1 - i) / 31 : i / 31;
       const delay = progress * 1800 + (rowOffsets[rowIndex] ?? 0);
       return { key: i, intensity: t, color, delay };
     });
-  }, [dailyValues, vibeConfig, rowIndex, globalMin, globalMax]);
+  }, [dailyValues, vibeConfig, rowIndex, globalMin, globalMax, isMobile]);
 
   return (
     <button
@@ -55,7 +56,7 @@ const MonthCluster = memo(function MonthCluster({
       `}
     >
       {/* Label — below dots on mobile, left of dots on desktop */}
-      <span className="order-last sm:order-first text-[6px] sm:text-[9px] tracking-wider uppercase text-white/50 group-hover:text-white/70 transition-colors duration-300 w-auto sm:w-7 text-center sm:text-right shrink-0 leading-tight mt-0.5 sm:mt-0">
+      <span className="order-last sm:order-first text-[8px] sm:text-[9px] tracking-wider uppercase text-white/50 group-hover:text-white/70 transition-colors duration-300 w-auto sm:w-7 text-center sm:text-right shrink-0 leading-tight mt-0.5 sm:mt-0">
         {MONTH_LABELS[month].slice(0, 3)}
       </span>
       <div className="flex flex-col sm:flex-row" style={{ gap: 'var(--dot-gap)' }}>

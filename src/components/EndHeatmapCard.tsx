@@ -82,7 +82,7 @@ const EndHeatmapCard = forwardRef<HTMLDivElement, EndHeatmapCardProps>(
             const dailyValues = cumulativeDataset[month];
             return (
               <div key={month} className="flex items-center gap-1 sm:gap-2">
-                <span className="text-[7px] sm:text-[8px] tracking-wider uppercase text-white/30 w-5 sm:w-6 text-right shrink-0">
+                <span className="text-[9px] sm:text-[8px] tracking-wider uppercase text-white/30 w-5 sm:w-6 text-right shrink-0">
                   {MONTH_LABELS[month].slice(0, 3)}
                 </span>
                 <div className="flex gap-[1px] sm:gap-[1.5px]">
@@ -129,7 +129,7 @@ const EndHeatmapCard = forwardRef<HTMLDivElement, EndHeatmapCardProps>(
           {guessHistory.map((record, i) => {
             const question = getQuestionById(record.questionId);
             return (
-              <div key={record.questionId} className="flex justify-between items-center w-full max-w-[420px] px-10">
+              <div key={record.questionId} className="flex justify-between items-center w-full max-w-[420px] px-4 sm:px-10">
                 <span className="text-[8px] sm:text-[9px] text-white/30 shrink-1 min-w-0">
                   {i + 1}. {question?.text ?? ''}
                 </span>
