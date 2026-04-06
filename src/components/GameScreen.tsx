@@ -203,7 +203,7 @@ export default function GameScreen({ shaderRef }: GameScreenProps) {
 
           {/* Heatmap — anchored below text zone, never moves */}
           <div
-            className="absolute left-0 right-0 flex items-start justify-center top-[135px] sm:top-[150px] bottom-[75px] sm:bottom-[60px] overflow-hidden"
+            className="absolute left-0 right-0 flex items-start justify-center top-[100px] sm:top-[150px] bottom-[50px] sm:bottom-[60px] overflow-visible sm:overflow-hidden"
           >
             <HeatmapField
               dataset={currentQuestion.dataset}

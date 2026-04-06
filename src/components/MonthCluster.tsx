@@ -55,8 +55,8 @@ const MonthCluster = memo(function MonthCluster({
         ${disabled ? 'pointer-events-none' : ''}
       `}
     >
-      {/* Label — below dots on mobile, left of dots on desktop */}
-      <span className="order-last sm:order-first text-[8px] sm:text-[9px] tracking-wider uppercase text-white/50 group-hover:text-white/70 transition-colors duration-300 w-auto sm:w-7 text-center sm:text-right shrink-0 leading-tight mt-0.5 sm:mt-0">
+      {/* Label — above dots on mobile, left of dots on desktop */}
+      <span className="text-[9px] sm:text-[9px] tracking-wider uppercase text-white/60 group-hover:text-white/70 transition-colors duration-300 w-auto sm:w-7 text-center sm:text-right shrink-0 leading-tight mb-0.5 sm:mb-0 sm:mt-0">
         {MONTH_LABELS[month].slice(0, 3)}
       </span>
       <div className="flex flex-col sm:flex-row" style={{ gap: 'var(--dot-gap)' }}>

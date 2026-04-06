@@ -119,7 +119,7 @@ export default function HeatmapField({
   }, [shaderRef, dataset, revealed]);
 
   return (
-    <div ref={containerRef} className="flex flex-row items-end sm:items-stretch sm:flex-col w-fit mx-auto" style={{ gap: 'var(--field-gap)' }}>
+    <div ref={containerRef} className="flex flex-row items-start sm:items-stretch sm:flex-col w-fit mx-auto" style={{ gap: 'var(--field-gap)' }}>
       {MONTH_ORDER.map((month, rowIndex) => (
         <MonthCluster
           key={month}
